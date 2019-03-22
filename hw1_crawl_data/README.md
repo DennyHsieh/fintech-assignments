@@ -7,5 +7,5 @@ Readme的詳細說明再請進入子資料夾，有詳細說明
 
 ## 財金指標爬蟲
 - Crawl and find the data of US weekly intial claims.
-https://github.com/DennyHsieh/fintech-assignments/tree/master/hw1_crawl_data/financial%20index
+- https://github.com/DennyHsieh/fintech-assignments/tree/master/hw1_crawl_data/financial%20index
 
