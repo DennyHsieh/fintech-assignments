@@ -3,7 +3,7 @@ Readme的詳細說明再請進入子資料夾，有詳細說明
 
 ## ETF 爬蟲
 - Crawl and find the history price information for our specified ETF.
-- Readme: https://github.com/DennyHsieh/fintech-assignments/tree/master/hw1_crawl_data/etf_price_info/etf_info
+- Readme: https://github.com/DennyHsieh/fintech-assignments/tree/master/hw1_crawl_data/etf_price_info
 - Code: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw1_crawl_data/etf_price_info/etf_price_info.ipynb
 
 ## 財金指標爬蟲
