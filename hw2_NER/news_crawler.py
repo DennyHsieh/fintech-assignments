@@ -1,12 +1,13 @@
 import os
 import requests
 import numpy as np
+import csv
 from bs4 import BeautifulSoup
 from google import google
 from googletrans import Translator
 
 # Google search api
-num_page = 10
+num_page = 1
 
 # Set the keywords and news(蘋果、自由、中時)
 news = ["appledaily", "ltn", "chinatimes"]
@@ -21,11 +22,12 @@ all_keywords = list(low_risk_keywords + medium_risk_keywords + high_risk_keyword
 # Google translator
 trans = Translator()
 
+# If you want to change keywords, replace all_keywords to xxx_risk_keywords
 for keyword in all_keywords:
     for cnt in range(len(websites)):
         search_results = google.search(keyword + websites[cnt], num_page)
 
-        # Save searching results to numpy array
+        # Save google-api searching results to numpy array
         search_results_folder = 'search_results_npy'
         if not os.path.exists(search_results_folder):
             os.mkdir(search_results_folder)
@@ -49,6 +51,7 @@ for keyword in all_keywords:
 
             title = result.name
 
+            # Get the news content from website
             cnts_p_tags = ''
             find_cnts = soup.findAll('div', attrs={'class': contents[cnt]})
             if find_cnts is None:
@@ -59,6 +62,8 @@ for keyword in all_keywords:
                     title = title.split("www")[0]
                     find_p_tags = find_cnt.find('p')
                     apple_text = find_p_tags.text
+
+                    # Remove ad
                     ads = ['推薦新聞', '跟上國際脈動', '看了這則', '即時論壇徵稿']
                     for ad in ads:
                         try:
@@ -81,9 +86,19 @@ for keyword in all_keywords:
                 cnts_p_tags_cn = None
                 continue
 
-            print(news[cnt], title, result.link, cnts_p_tags, cnts_p_tags_cn)
+            print('Finish crawling ', link)
+            # print(news[cnt], title, link, cnts_p_tags, cnts_p_tags_cn)
 
-        # crawl_data_folder = 'crawl_data'
-        # if not os.path.exists(search_results_folder):
-        #     os.mkdir(search_results_folder)
-        # TODO: create csv
+            # Save the result ('news', 'title', 'link', 'content', 'content_cn') to csv
+            crawl_data_folder = 'crawl_data_csv'
+            if not os.path.exists(crawl_data_folder):
+                os.mkdir(crawl_data_folder)
+
+            with open(os.path.join(crawl_data_folder, 'news_data.csv'), mode='a+', newline='') as csvfile:
+                fieldnames = ['news', 'title', 'link', 'content', 'content_cn']
+                news_writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=',', quotechar='"')
+                news_writer.writerow({'news': news[cnt], 'title': title, 'link': link, 'content': cnts_p_tags,
+                                      'content_cn': cnts_p_tags_cn})
+
+                # news_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                # news_writer.writerow([news[cnt], title, link, cnts_p_tags, cnts_p_tags_cn])
