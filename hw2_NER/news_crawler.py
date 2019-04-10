@@ -7,7 +7,7 @@ from google import google
 from googletrans import Translator
 
 # Google search api
-num_page = 1
+num_page = 10
 
 # Set the keywords and news(蘋果、自由、中時)
 news = ["appledaily", "ltn", "chinatimes"]
@@ -86,7 +86,7 @@ for keyword in all_keywords:
                 cnts_p_tags_cn = None
                 continue
 
-            print('Finish crawling ', link)
+            print('Finish crawling ', keyword, link)
             # print(news[cnt], title, link, cnts_p_tags, cnts_p_tags_cn)
 
             # Save the result ('news', 'title', 'link', 'content', 'content_cn') to csv
@@ -95,10 +95,10 @@ for keyword in all_keywords:
                 os.mkdir(crawl_data_folder)
 
             with open(os.path.join(crawl_data_folder, 'news_data.csv'), mode='a+', newline='') as csvfile:
-                fieldnames = ['news', 'title', 'link', 'content', 'content_cn']
+                fieldnames = ['news', 'keywords', 'title', 'link', 'content', 'content_cn']
                 news_writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=',', quotechar='"')
-                news_writer.writerow({'news': news[cnt], 'title': title, 'link': link, 'content': cnts_p_tags,
-                                      'content_cn': cnts_p_tags_cn})
+                news_writer.writerow({'news': news[cnt], 'keywords': keyword, 'title': title, 'link': link,
+                                      'content': cnts_p_tags, 'content_cn': cnts_p_tags_cn})
 
                 # news_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 # news_writer.writerow([news[cnt], title, link, cnts_p_tags, cnts_p_tags_cn])
