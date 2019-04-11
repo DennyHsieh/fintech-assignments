@@ -24,3 +24,6 @@ Crwal the NER result from CKIP system
 
 
 ## 繪製共現圖
+- 將文件中分類過的詞進行 term to matrix(TDM)
+- 將TDM轉成Co-occurrence Matrix
+- 繪製出各類別之間的共現圖
