@@ -1,29 +1,55 @@
 # 資料搜集與文字探勘共現性進行資料視覺化
 
-蒐集洗錢相關的新聞資訊，用NER挑選出人名與事件，並繪製共現性圖
+According to our final project topic(防洗錢之風險性人物評估), we decided to finish hw2 by divided to 3 parts. (Shown as below)
+- 蒐集洗錢相關的新聞資訊
+- 用NER挑選出人名與事件
+- 並繪製共現性圖
+
+### Package Install
+```
+pip install google-search-api
+pip3 install googletrans
+pip3 install tensorflow
+git clone https://github.com/Determined22/zh-NER-TF.git
+```
+
+- google-search-api: Google搜尋套件
+- googletrans: Google翻譯套件
+- tensorflow: NER用到之機器學習套件
 
 ## Crawl the News
-- Crwal the news with keywords of money laundering
-- Code:
+
+- Crawl the news with keywords of money laundering
+- News:
+    - appledaily(蘋果)
+    - ltn(自由)
+    - chinatime(中時)
+- Code: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/news_crawler.py
+- Output Data: 
+    - csv file: https://github.com/DennyHsieh/fintech-assignments/tree/master/hw2_NER/crawl_data_csv
+    - numpy file(google search result): https://github.com/DennyHsieh/fintech-assignments/tree/master/hw2_NER/search_results_npy
 
 ## NER
-- 
+- Seperate NER data By 2 ways
+    - NER by zh-NER-TF
+        - Analysis the NER result by sample code
+        - Code: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/PER.ipynb
+        - NER training log: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/NER_training_log.md
+    - NER by CKIP
+        - Analysis the NER result from CKIP system 
+        - Code and result: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/CKIP-NER.ipynb
+    - Final NER result (include the result of zh-NER-TF and CKIP)
+        - Data(csv with PER): https://github.com/DennyHsieh/fintech-assignments/tree/master/hw2_NER/PER
 
-## NER by CKIP
-Crwal the NER result from CKIP system 
-- Code:https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/CKIP-NER.ipynb
-### package
-- os:處理文件與目錄
-- requests:爬蟲工具
-- csv:讀取新聞檔及匯出CKIP NER system分析的結果
-### Flowchart
-### 3種當別人使用你的程式最有可能會遇到的錯誤情況
-- CKIP NER system的網址並不會根據輸入的內容改變，因此需透過requests.post來爬取
-- 如果輸出的文字與類別對不上，且明顯是文字差一點的狀況，注意content的內容從文字開始，而不是“符號開始
-- 輸入至CKIP NER的content必須把分行或空格去掉，因CKIP NER system 無法讀取過多分行的content
+## TDM, Co-occurrence_Diagram and Heatmap
+- Target:
+    - 將文件中分類過的詞進行 term to matrix(TDM)
+    - 將TDM轉成Co-occurrence Matrix
+    - 繪製出各類別之間的共現圖
+- Code and result: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/Co-occurrence_Diagram.ipynb
 
-
-## 繪製共現圖
-- 將文件中分類過的詞進行 term to matrix(TDM)
-- 將TDM轉成Co-occurrence Matrix
-- 繪製出各類別之間的共現圖
+### 分工
+- 可參考git log
+- DennyHsieh: Crawl the News, readme correction final organization all codes
+- judy4831: NER by zh-NER-TF, TDM, Co-occurrence_Diagram and Heatmap
+- BentonWu: NER by CKIP, first readme
