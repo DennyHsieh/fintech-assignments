@@ -1,15 +1,21 @@
-# 資料搜集與文字探勘共現性進行資料視覺化
+# HW2_資料搜集與文字探勘共現性進行資料視覺化
 
 According to our final project topic(防洗錢之風險性人物評估), we decided to finish hw2 by divided to 3 parts. (Shown as below)
 - 蒐集洗錢相關的新聞資訊
 - 用NER挑選出人名與事件
 - 並繪製共現性圖
 
+### Overview and Procedure
+- 由於防洗錢題目非常注重判別人名是否為高風險洗錢之人物，而我們已經有風險性關鍵字(於ref資料夾有風險性關鍵字分類)，並建立資料庫
+- 因此經過課堂討論後決定，以搜尋關鍵字和新聞內文為資料，
+- 再將擷取內文丟到NER得到人名
+- 最後做在其中一種風險屬性（最高,高,中,低風險）下的人名之共現性圖與熱點圖
+
 ### Package Install
 ```
 pip install google-search-api
-pip3 install googletrans
-pip3 install tensorflow
+pip install googletrans
+pip install tensorflow
 git clone https://github.com/Determined22/zh-NER-TF.git
 ```
 
