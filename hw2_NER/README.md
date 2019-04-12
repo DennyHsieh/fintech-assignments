@@ -46,4 +46,10 @@ git clone https://github.com/Determined22/zh-NER-TF.git
     - 將文件中分類過的詞進行 term to matrix(TDM)
     - 將TDM轉成Co-occurrence Matrix
     - 繪製出各類別之間的共現圖
-Code and result: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/Co-occurrence_Diagram.ipynb
+- Code and result: https://github.com/DennyHsieh/fintech-assignments/blob/master/hw2_NER/Co-occurrence_Diagram.ipynb
+
+### 分工
+- 可參考git log
+- DennyHsieh: Crawl the News, readme correction final organization all codes
+- judy4831: NER by zh-NER-TF, TDM, Co-occurrence_Diagram and Heatmap
+- BentonWu: NER by CKIP, first readme
