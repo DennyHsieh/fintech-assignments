@@ -6,8 +6,14 @@
 * ModelC. 2013_EL_A global index of riskiness
 
 ### ETF
+
+#### Financials Equity ETF List (51)
 'FNCL', 'BDCL', 'IYG', 'BDCZ', 'IAI', 'PFI', 'KBWP', 'KBE', 'RWW',
 'KCE', 'VQT', 'JHMF', 'PSP', 'QABA', 'PEX', 'KBWR', 'CHIX', 'SKF',
 'KRE', 'UYG', 'KIE', 'BIZD', 'VFH', 'LBDC', 'FXO', 'RYF', 'FINZ', 'FAS',
 'IAT', 'KBWD', 'EUFN', 'IXG', 'DXJF', 'LMLP', 'PHDG', 'PSCF', 'IAK',
 'FAZ', 'DPST', 'KBWB', 'FINU', 'SEF', 'IYF', 'XLF', 'BDCS', 'WDRW'
+
+#### Consumer Staples Equity ETF List (26)
+'XLP', 'PBJ', 'FSTA', 'EMCG', 'WBIL', 'RHS', 'KXI', 'PSL', 
+'PSCC','UGE', 'IYK', 'VDC', 'WBIE', 'WBID', 'SZK', 'ECON', 'FXG'
