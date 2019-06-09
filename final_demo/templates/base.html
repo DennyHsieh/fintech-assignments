@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Crime database{% endblock title %}</title>
+  </head>
+  <body>
+    <h3>功能列</h3>
+    <ul>
+      <li><a href="/">首頁</a></li>
+      <!--<li><a href="/reset">清除記錄</a></li>-->
+    </ul>
+    <hr>
+    {% block content %}{% endblock content %}
+  </body>
+</html>

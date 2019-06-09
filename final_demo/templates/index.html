@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>反洗錢防治資料庫</h1>
+<p>請輸入想查詢的人名</p>
+<form action="/result" method="post">
+  <label for="name">輸入姓名：</label>
+  <input type="text" name="name" id="name" required>
+  <input type="submit" value="Submit">
+</form>
+{% endblock content %}
