@@ -26,13 +26,13 @@ python demo.py
 
 - Will run a server listening <http://localhost:5000>.
 - Enter the name you want to search.
-[](img/demo_index.png)
+![](img/demo_index.png)
 
 - You can see the search result from the result page.
-[](img/demo_result.png)
+![](img/demo_result.png)
 
 - If no match result, the page is shown as below
-[](img/demo_noresult.png)
+![](img/demo_noresult.png)
 
 
 ## Analysis

@@ -17,7 +17,6 @@ def result():
     # Get the database connection
     db = get_db()
 
-    # Draw member ids from given group
     name = request.form.get('name', 'ALL')
     valid_name_sql = 'SELECT * FROM potentialCrime '
 
@@ -37,7 +36,7 @@ def result():
             'cnt': row[5],
             'keyword': row[6],
         })
-    # If the result is not valid name, return 404
+    # If the result is not valid name, return noresult page
     if not valid_datas:
         err_msg = "找不到人名: '%s'" % name
         return render_template('noresult.html', search_results=err_msg)
