@@ -5,6 +5,10 @@ app = Flask(__name__)
 SQLITE_DB_PATH = 'final_demo_result.db'
 SQLITE_DB_SCHEMA = 'create_db_potential.sql'
 MEMBER_CSV_PATH = 'final_demo_result.csv'
+low_risk_keywords = ["人口販運", "性剝削", "兒童", "偽造貨幣", "殺人", "重傷害", "搶奪", "勒贖", "海盜", "恐怖主義", "資恐"]
+medium_risk_keywords = ["非法販賣武器", "贓物", "竊盜", "綁架", "拘禁", "妨害自由", "環保犯罪", "偽造文書"]
+high_risk_keywords = ["仿冒", "盜版", "侵害營業秘密"]
+exhigh_risk_keywords = ["毒品販運", "詐欺", "走私", "稅務犯罪", "組織犯罪", "證券犯罪", "貪汙賄賂", "第三方洗錢"]
 
 
 @app.route('/')
@@ -27,6 +31,21 @@ def result():
 
     valid_datas = []
     for row in cursor:
+        # Define risk
+        valid_risk = ''
+        for idx, val in enumerate(low_risk_keywords):
+            if val == row[6]:
+                valid_risk = '低'
+        for idx, val in enumerate(medium_risk_keywords):
+            if val == row[6]:
+                valid_risk = '中'
+        for idx, val in enumerate(high_risk_keywords):
+            if val == row[6]:
+                valid_risk = '高'
+        for idx, val in enumerate(exhigh_risk_keywords):
+            if val == row[6]:
+                valid_risk = '極高'
+
         valid_datas.append({
             'id': row[0],
             'profile_id': row[1],
@@ -35,6 +54,7 @@ def result():
             'title': row[4],
             'cnt': row[5],
             'keyword': row[6],
+            'risk': valid_risk,
         })
     # If the result is not valid name, return noresult page
     if not valid_datas:
