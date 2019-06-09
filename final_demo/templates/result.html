@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}查詢結果{% endblock title %}
+
+{% block content %}
+<h1>反洗錢防治資料庫</h1>
+<h2>查詢結果</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Profile ID</th>
+      <th>姓名</th>
+      <th>年齡</th>
+      <th>職稱</th>
+      <th>疑似犯罪內文</th>
+      <th>關鍵字</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s_result in search_results %}
+    <tr>
+      <td>{{ s_result.id }}</td>
+      <td>{{ s_result.profile_id }}</td>
+      <td>{{ s_result.name }}</td>
+      <td>{{ s_result.age }}</td>
+      <td>{{ s_result.title }}</td>
+      <td>{{ s_result.cnt }}</td>
+      <td>{{ s_result.keyword }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

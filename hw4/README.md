@@ -11,7 +11,7 @@
     - get_cse_week_month_data.ipynb
     - get_fe_week_month_data.ipynb
 - 3篇paper的分析手法
-    - ModelA: 
+    - ModelA: model_ASKSR.ipynb
     - ModelB: model_sharpeOmeasure.ipynb
     - ModelC: model_Riskiness.ipynb
 - 分析結果：rank資料夾內做排名
@@ -31,5 +31,7 @@
 ## 分析
 - 週資料或月資料結果評比相似嗎? 
     - 直接看rank內的各個csv結果，sharpe Omega差異不大，riskiness差異程度大
+    - ASKSR的週資料與月資料最為相似
 - 不同指標評比結果相似嗎?
     - 結果並不相同
+    - 因此須針對不同目的用不同指標分析
