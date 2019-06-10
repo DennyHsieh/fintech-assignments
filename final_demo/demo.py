@@ -26,35 +26,40 @@ def result():
 
     # if name == 'ALL':
     #     cursor = db.execute(valid_name_sql)
+    # else:
     valid_name_sql += 'WHERE name = ?'
     cursor = db.execute(valid_name_sql, (name,))
 
     valid_datas = []
     for row in cursor:
-        # Define risk
-        valid_risk = ''
-        for idx, val in enumerate(low_risk_keywords):
-            if val == row[6]:
-                valid_risk = '低'
-        for idx, val in enumerate(medium_risk_keywords):
-            if val == row[6]:
-                valid_risk = '中'
-        for idx, val in enumerate(high_risk_keywords):
-            if val == row[6]:
-                valid_risk = '高'
-        for idx, val in enumerate(exhigh_risk_keywords):
-            if val == row[6]:
-                valid_risk = '極高'
+        # # Define risk
+        # valid_risk = ''
+        # for idx, val in enumerate(low_risk_keywords):
+        #     if val == row[6]:
+        #         valid_risk = '低'
+        # for idx, val in enumerate(medium_risk_keywords):
+        #     if val == row[6]:
+        #         valid_risk = '中'
+        # for idx, val in enumerate(high_risk_keywords):
+        #     if val == row[6]:
+        #         valid_risk = '高'
+        # for idx, val in enumerate(exhigh_risk_keywords):
+        #     if val == row[6]:
+        #         valid_risk = '極高'
 
         valid_datas.append({
             'id': row[0],
-            'profile_id': row[1],
-            'name': row[2],
-            'age': row[3],
-            'title': row[4],
-            'cnt': row[5],
-            'keyword': row[6],
-            'risk': valid_risk,
+            # 'profile_id': row[1],
+            'name': row[1],
+            'age': row[2],
+            'title': row[3],
+            'keyword': row[4],
+            'crime_risk': row[5],
+            'cnt': row[6],
+            'news_title': row[7],
+            'news_link': row[8],
+            'other_suspect': row[9],
+            'suspect_probability': row[10],
         })
     # If the result is not valid name, return noresult page
     if not valid_datas:
