@@ -22,13 +22,26 @@ def result():
     db = get_db()
 
     name = request.form.get('name', 'ALL')
+    age = request.form.get('age')
+    title = request.form.get('title')
     valid_name_sql = 'SELECT * FROM potentialCrime '
 
-    # if name == 'ALL':
-    #     cursor = db.execute(valid_name_sql)
-    # else:
-    valid_name_sql += 'WHERE name = ?'
-    cursor = db.execute(valid_name_sql, (name,))
+    if name == 'ALL':
+        cursor = db.execute(valid_name_sql)
+    else:
+        valid_name_sql += 'WHERE name = ?'
+        cursor = db.execute(valid_name_sql, (name,))
+
+        if age != '':
+            valid_name_sql += 'AND age = ?'
+            cursor = db.execute(valid_name_sql, (name, age,))
+
+        if title != '':
+            valid_name_sql += 'AND title = ?'
+            if age != '':
+                cursor = db.execute(valid_name_sql, (name, age, title,))
+            else:
+                cursor = db.execute(valid_name_sql, (name, title,))
 
     valid_datas = []
     for row in cursor:
@@ -64,6 +77,10 @@ def result():
     # If the result is not valid name, return noresult page
     if not valid_datas:
         err_msg = "找不到人名: '%s'" % name
+        if age != '':
+            err_msg += "    年齡: '%s'" % age
+        if title != '':
+            err_msg += "    職稱: '%s'" % title
         return render_template('noresult.html', search_results=err_msg)
 
     return render_template('result.html', search_results=valid_datas)
@@ -89,5 +106,5 @@ def close_connection(exception):
 
 
 if __name__ == '__main__':
-    app.run()
-    # app.run(debug=True)
+    # app.run()
+    app.run(debug=True)

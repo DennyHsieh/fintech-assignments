@@ -3,9 +3,9 @@
 {% block title %}查詢結果{% endblock title %}
 
 {% block content %}
-<h1>反洗錢防治資料庫</h1>
-<h2>查詢結果</h2>
-<table>
+<h1 align="center">反洗錢防治資料庫</h1>
+<h2 align="center">查詢結果</h2>
+<table class="myTable">
   <thead>
     <tr>
       <th>ID</th>
@@ -16,7 +16,7 @@
       <th>關鍵字</th>
       <th>犯罪風險等級</th>
       <th>疑似犯罪內文</th>
-      <th>新聞標題</th>
+      <th >新聞標題</th>
       <th>新聞連結</th>
       <th>其他可能嫌疑者</th>
       <th>嫌疑可能性</th>
@@ -25,20 +25,30 @@
   <tbody>
     {% for s_result in search_results %}
     <tr>
-      <td>{{ s_result.id }}</td>
+      <td width="20px" align="center">{{ s_result.id }}</td>
       <!--<td>{{ s_result.profile_id }}</td>-->
-      <td>{{ s_result.name }}</td>
-      <td>{{ s_result.age }}</td>
-      <td>{{ s_result.title }}</td>
-      <td>{{ s_result.keyword }}</td>
-      <td>{{ s_result.crime_risk }}</td>
-      <td>{{ s_result.cnt }}</td>
-      <td>{{ s_result.news_title }}</td>
-      <td><a href="{{ s_result.news_link }}">link</a></td>
-      <td>{{ s_result.other_suspect }}</td>
-      <td>{{ s_result.suspect_probability }}</td>
+      <td width="50px" align="center">{{ s_result.name }}</td>
+      <td width="50px" align="center">{{ s_result.age }}</td>
+      <td width="50px" align="center">{{ s_result.title }}</td>
+      <td width="130px" align="center">{{ s_result.keyword }}</td>
+      <td width="130px" align="center">{{ s_result.crime_risk }}</td>
+      <td width="400px">{{ s_result.cnt }}</td>
+      <td width="100px">{{ s_result.news_title }}</td>
+      <td width="90px" align="center"><a href="{{ s_result.news_link }}">link</a></td>
+      <td width="90px" align="center">{{ s_result.other_suspect }}</td>
+      <td width="85px" align="center">{{ s_result.suspect_probability }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+<style>
+   .myTable {border: 1px solid black;}
+   .myTable {border-collapse: collapse;}
+   .myTable tr:nth-child(even) {background: #EEE}
+   .myTable tr:nth-child(odd) {background: #FFF}
+   .myTable th {background-color:lightblue;}
+   .myTable thead tr th {position:sticky; top:0; /* 列首永遠固定於上 */}
+   .myTable th:first-child{z-index:2; background-color:lightblue;}
+</style>
 {% endblock content %}

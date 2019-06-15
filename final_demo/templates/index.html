@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>反洗錢防治資料庫</h1>
+<h1 align="center">反洗錢防治資料庫</h1>
 <p>請輸入想查詢的人名</p>
 <form action="/result" method="post">
-  <label for="name">輸入姓名：</label>
+  <label for="name">姓名：</label>
   <input type="text" name="name" id="name" required>
+  <label for="name">年齡：</label>
+  <input type="text" name="age" id="age">
+  <label for="name">職稱：</label>
+  <input type="text" name="title" id="title">
   <input type="submit" value="Submit">
 </form>
 {% endblock content %}

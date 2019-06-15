@@ -2,18 +2,19 @@ import os
 import pandas as pd
 
 data_folder = 'final_demo'
-data_csv = os.path.join(data_folder, 'AML_data.csv')
+data_csv = os.path.join(data_folder, 'AML_data_all.csv')
+# data_csv = os.path.join(data_folder, 'AML_data.csv')
 output_csv = os.path.join(data_folder, 'final_demo_result.csv')
 
 df = pd.read_csv(data_csv).drop(['Unnamed: 0'], axis=1)
 # print(df.iloc[1])
 
-df['age'] = None
-df['title'] = None
+# df['age'] = None
+# df['title'] = None
 # df['profile_id'] = 0
 names = []
 
-
+# print(df['name'][6220:])
 def add_col(row):
     for idx, val in enumerate(names):
         if row['name'] not in names:
@@ -24,7 +25,7 @@ def add_col(row):
 
 
 # df = df.apply(add_col, axis=1)
-
+# print(df.columns)
 new_df = df.reindex(
     columns=list(['name', 'age', 'title', 'crime', 'crime_risk', 'key_sentence', 'news_title', 'news_link',
                   'other_suspect', 'suspect_probability']))
