@@ -9,6 +9,12 @@ $ pip install nltk
 $ pip install opencc
 $ pip install jieba
 ```
+##  Verdict Analysis
+-Target
+    -Step 1:從Lawsnote下載洗錢相關的法律判決書
+    -Step 2:分析判決書的內容，找到犯罪者及其個人資訊 
+-Code:  Verdict_Process.ipynb
+        Govt_web_crawl.ipynb
 
 ## Find Suspect
 - Target
