@@ -10,11 +10,16 @@ $ pip install opencc
 $ pip install jieba
 ```
 ##  Verdict Analysis
--Target
-    -Step 1:從Lawsnote下載洗錢相關的法律判決書
-    -Step 2:分析判決書的內容，找到犯罪者及其個人資訊 
--Code:  Verdict_Process.ipynb
-        Govt_web_crawl.ipynb
+- Target
+    - Step 1: 從Lawsnote下載洗錢相關的法律判決書
+         - 使用Selenium從Lawsnote下載判決書Word檔
+         - 將Word轉成Txt以便文字分析
+
+    - Step 2: 分析判決書的內容，找到犯罪者及其個人資訊 
+         - 依判決書內的關鍵詞分析犯罪者
+         - 從人名前後查找年齡資訊
+- Code: Verdict_Process.ipynb,Govt_web_crawl.ipynb
+
 
 ## Find Suspect
 - Target
