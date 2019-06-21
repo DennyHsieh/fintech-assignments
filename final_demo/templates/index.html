@@ -2,14 +2,25 @@
 
 {% block content %}
 <h1 align="center">反洗錢防治資料庫</h1>
-<p>請輸入想查詢的人名</p>
+<p>請輸入想查詢的人名 <small><font color=red>*</font>必填</small></p>
 <form action="/result" method="post">
-  <label for="name">姓名：</label>
+  <label for="name"><font color=red>*</font>姓名：</label>
   <input type="text" name="name" id="name" required>
+  <br>
   <label for="name">年齡：</label>
   <input type="text" name="age" id="age">
+  <br>
   <label for="name">職稱：</label>
   <input type="text" name="title" id="title">
   <input type="submit" value="Submit">
 </form>
+<br>
+<br>
+<hr>
+<footer>
+  <h4>若有任何意見與回饋，再請至GitHub Issue或填寫Google表單給予我們回饋，非常感謝</h4>
+  <p>Issue: <a href="https://github.com/DennyHsieh/fintech-assignments/issues" target="_blank">Github Issue連結</a> </p>
+  <p>Google form: <a href="https://forms.gle/hfF4JDik5bhPS6VF9" target="_blank">表單連結</a> </p>
+</footer>
+
 {% endblock content %}

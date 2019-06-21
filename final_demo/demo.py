@@ -26,22 +26,22 @@ def result():
     title = request.form.get('title')
     valid_name_sql = 'SELECT * FROM potentialCrime '
 
-    if name == 'ALL':
-        cursor = db.execute(valid_name_sql)
-    else:
-        valid_name_sql += 'WHERE name = ?'
-        cursor = db.execute(valid_name_sql, (name,))
+    # if name == 'ALL':
+    #     cursor = db.execute(valid_name_sql)
+    # else:
+    valid_name_sql += 'WHERE name = ?'
+    cursor = db.execute(valid_name_sql, (name,))
 
+    if age != '':
+        valid_name_sql += 'AND age = ?'
+        cursor = db.execute(valid_name_sql, (name, age,))
+
+    if title != '':
+        valid_name_sql += 'AND title = ?'
         if age != '':
-            valid_name_sql += 'AND age = ?'
-            cursor = db.execute(valid_name_sql, (name, age,))
-
-        if title != '':
-            valid_name_sql += 'AND title = ?'
-            if age != '':
-                cursor = db.execute(valid_name_sql, (name, age, title,))
-            else:
-                cursor = db.execute(valid_name_sql, (name, title,))
+            cursor = db.execute(valid_name_sql, (name, age, title,))
+        else:
+            cursor = db.execute(valid_name_sql, (name, title,))
 
     valid_datas = []
     for row in cursor:
@@ -106,5 +106,5 @@ def close_connection(exception):
 
 
 if __name__ == '__main__':
-    # app.run()
-    app.run(debug=True)
+    app.run()
+    # app.run(debug=True)
